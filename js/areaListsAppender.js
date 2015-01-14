@@ -7,6 +7,7 @@ function init() {
     localStorage.removeItem("regions");
     categoryList();
     regionList();
+
 }
 function categoryList() {
 
