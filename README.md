@@ -74,9 +74,9 @@ men exekverar dem inte.</p>
 <p>
     Vissa områden/stadsdelar som blocket använder sig av skiljer sig ibland från de svar man får från geCode.
     Eftersom geoCode hämtar ut ett område med lat,lng på det namnet man söker på så kan det skilja sig i vissa områden.
-
-        <bold>Exempel:</bold> Ibland så hämtar du ut gator i skärholmen istället för området Skärholmen i Stockholm.
-
+</p>
+    <p><bold>Exempel:</bold> Ibland så hämtar du ut gator i skärholmen istället för området Skärholmen i Stockholm.</p>
+<p>
     Jag kan då inte hämta ut informationen ur blocket objektet, eftersom jag inte får ut ett område där jag kan placera det.
     Detta resulterar i att ett infowindow skrivs ut, men att ingen information finns i det.
 </p>
