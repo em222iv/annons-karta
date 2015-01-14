@@ -1,81 +1,71 @@
-[![Build Status](https://travis-ci.org/google/google-api-php-client.svg)](https://travis-ci.org/google/google-api-php-client)
+<h1>Rapport-projekt Annons-karta</h1>
+<h3>Inledning</h3>
 
-# Google APIs Client Library for PHP #
+<p>Min applikation handlar om att kunna hitta närliggande ting till salu i närområdet. Jag kombinerar
+googlemaps och apfy, som bidrar med ett api för blocket, för att hämta ut artiklar till salu.</p>
 
-## Description ##
-The Google API Client Library enables you to work with Google APIs such as Google+, Drive, or YouTube on your server.
+<p>Det är alltså en simplifierad version av blocket, just att kunna hitta något i närheten som man kan gå över för att köpa
+Dock så måste man alltid gå via blockets egen hemsida för att kunna hitta kontraktinformation till personen.
+</p>
+<p>
+Så vitt jag vet finns det ingen liknande applikation för att hitta artiklar i närheten av sig
+</p>
+<h4>>Schematisk bild över applikationen</h4>
+<img src="img/schematiskbild.jpg">
 
-## Beta ##
-This library is in Beta. We're comfortable enough with the stability and features of the library that we want you to build real production applications on it. We will make an effort to support the public and protected surface of the library and maintain backwards compatibility in the future. While we are still in Beta, we reserve the right to make incompatible changes. If we do remove some functionality (typically because better functionality exists or if the feature proved infeasible), our intention is to deprecate and provide ample time for developers to update their code.
 
-## Requirements ##
-* [PHP 5.2.1 or higher](http://www.php.net/)
-* [PHP JSON extension](http://php.net/manual/en/book.json.php)
+<h3>Serversida</h3>
 
-*Note*: some features (service accounts and id token verification) require PHP 5.3.0 and above due to cryptographic algorithm requirements. 
+<p>
+Jag har valt mig att använda mig av php på serversida för att prata med API:erna.
+Jag använder mig av ett bibliotek som heter "Requests" som gör det enkelt att göra Requests mot API:erna.
+Cashningvis så sprarar jag undan det lilla som behövs(Kategorier och Län) i JSON-filer.
+</p>
 
-## Developer Documentation ##
-http://developers.google.com/api-client-library/php
+<p>
+Funktionaliteten fungerar så att när en användare får välja bland de katerogier och län som blocket erbjuder, och sedan den sökterm man vill.
+Detta skickas mot apfy, och blocket, tar en emot JSON svar med det artiklar som finns på blocket.
+Just nu hämtar den bara de 50 första träffarna. Detta för att jag vill bara ha de senast uppdaterade artiklarna så att man inte får upp flera månader gamla annonsen som redan kan va sålda.
 
-## Installation ##
+Efter detta så modifieras svaret och skickas till googles geoCode för att peka upp platserna där de finns belägna.
+</p>
 
-For the latest installation and setup instructions, see [the documentation](https://developers.google.com/api-client-library/php/start/installation).
+<p>Ifall mina svar från blocket är tomma så presenteras användaren med ett felmeddelande som besrkiver problemet.</p>
 
-## Basic Example ##
-See the examples/ directory for examples of the key client features.
-```PHP
-<?php
+<h3>Klientsida</h3>
 
-  require_once 'google-api-php-client/autoload.php'; // or wherever autoload.php is located
-  
-  $client = new Google_Client();
-  $client->setApplicationName("Client_Library_Examples");
-  $client->setDeveloperKey("YOUR_APP_KEY");
-  
-  $service = new Google_Service_Books($client);
-  $optParams = array('filter' => 'free-ebooks');
-  $results = $service->volumes->listVolumes('Henry David Thoreau', $optParams);
+<p>På Klientsida har jag valt att använda mig av javascript och Jquery. All cashning härifrån sker via localStorage.
+</p>
 
-  foreach ($results as $item) {
-    echo $item['volumeInfo']['title'], "<br /> \n";
-  }
-  
-```
+<p>
+Javascripten tar emot data från klient och modiefierar data för att passa php-servers kall till API.
+Med googlemaps API så kan man då enkelt i javascript peka ut platser och presentera den informationen som tillhör den platsen.
 
-## Frequently Asked Questions ##
+Med ajax postar jag till PHP-servern och sparar sedan undan den data som jag får tillbaka i localStorage, för att lätta kunna hantera senare.
+</p>
 
-### What do I do if something isn't working? ###
+<p>
+Felhantering tar hand om tomma svar, ifall sökningarna är identiska, ifall något saknas till sökningen.
+</p>
 
-For support with the library the best place to ask is via the  google-api-php-client tag on StackOverflow: http://stackoverflow.com/questions/tagged/google-api-php-client
+<h3>Säkerhet och prestandaoptimering</h3>
 
-If there is a specific bug with the library, please file a issue in the Github issues tracker, including a (minimal) example of the failing code and any specific errors retrieved. Feature requests can also be filed, as long as they are core library requests, and not-API specific: for those, refer to the documentation for the individual APIs for the best place to file requests. Please try to provide a clear statement of the problem that the feature would address.
+<p>Säkerthetsmässigt så har jag ingen databas att tänka på. Men jag använder mig av strip_tags innan något skickas
+mot API:et och sedan textContent vid presentering av text, vilket kan presentera taggar,ifall det skulle komma något otäckt svar från blocket,
+men exekverar dem inte.</p>
 
-### How do I contribute? ###
+<h3>Offline-first</h3>
 
-We accept contributions via Github Pull Requests, but all contributors need to be covered by the standard Google Contributor License Agreement. You can find links, and more instructions, in the documentation: https://developers.google.com/api-client-library/php/contribute
+<p>
+    Jag vill att användaren ska kunna se de senast browsade artiklarna offline.
+    Söker man t.ex. på Kalmar län och ser att det finns träffar i Vimmerby och klickar på det området så kommer dens artiklar att sparas i menyn.
+    Dessa kan också ses i offline-läge.
+</p>
 
-### Why do you still support 5.2? ###
+<h3>Egen reflektion kring projektet</h3>
+<p>
 
-When we started working on the 1.0.0 branch we knew there were several fundamental issues to fix with the 0.6 releases of the library. At that time we looked at the usage of the library, and other related projects, and determined that there was still a large and active base of PHP 5.2 installs. You can see this in statistics such as the PHP versions chart in the WordPress stats: http://wordpress.org/about/stats/. We will keep looking at the types of usage we see, and try to take advantage of newer PHP features where possible.
+</p>
+<h3>Inledning</h3>
 
-### Why does Google_..._Service have weird names? ###
-
-The _Service classes are generally automatically generated from the API discovery documents: https://developers.google.com/discovery/. Sometimes new features are added to APIs with unusual names, which can cause some unexpected or non-standard style naming in the PHP classes. 
-
-### How do I deal with non-JSON response types? ###
-
-Some services return XML or similar by default, rather than JSON, which is what the library supports. You can request a JSON response by adding an 'alt' argument to optional params that is normally the last argument to a method call:
-
-```
-$opt_params = array(
-  'alt' => "json"
-);
-```
-
-## Code Quality ##
-
-Copy the ruleset.xml in style/ into a new directory named GAPI/ in your
-/usr/share/php/PHP/CodeSniffer/Standards (or appropriate equivalent directory),
-and run code sniffs with:
-
-        phpcs --standard=GAPI src/
+<p></p>

@@ -10,7 +10,7 @@ $(document).keypress(function(event){
 });
 $("#searchButton").click(function(e) {
     var seachquery = $("#searchInput").val();
-
+    
     //when searchbutton is clicked get value and filtering choices, save locally, toggle menu, post for php to make API request
 
     var category = localStorage.getItem("chosenCategory");

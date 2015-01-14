@@ -10,6 +10,19 @@ function searchLocations(data,searchResult,region,category) {
 
     //keep result if search is the same as previous
     //else save new search to localstorage
+    console.log(category);
+    if(searchResult == null){
+        alert('Du måste ange en sökning');
+        return
+    }
+    if(category == null){
+        alert('Välj Kategori');
+        return
+    }
+    if(region == null){
+        alert('Välj Län');
+        return;
+    }
     if(search == searchResult && cat == category && reg == region){
         return;
     }else {
