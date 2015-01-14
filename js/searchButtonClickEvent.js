@@ -22,7 +22,6 @@ $("#searchButton").click(function(e) {
     }
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
-
     $.post(
         "APISearch.php",
         {

@@ -3,20 +3,13 @@
  */
 
 function renderBrowsList() {
-    var listdiv = document.getElementById('browsList');
-    console.log(listdiv);
-    var div = document.createElement('div');
+    var div = "";
+    div = document.createElement('div');
     div.class = 'form-group text-center';
     var browsList  = localStorage.getItem("browsList");
-    console.log(browsList);
-    $( div ).append( browsList );
-
-    $( listdiv ).append( div );
-    console.log(listdiv);
+    console.log(div,browsList)
+    div.innerHTML=browsList;
+    document.getElementById("browsList").appendChild(div);
 }
-
-$("#cleanBrowseHistory").click(function(e) {
-
-});
 
 window.addEventListener(window,'load', renderBrowsList())

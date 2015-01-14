@@ -6,7 +6,7 @@ ini_set('include_path', 'C:\xampp\htdocs\phppot_samples\php_google_oauth_login\g
 
 require_once('getBaseInfo.php');
 ?>
-<html /*MANIFEST="manifest.appcache"*/>
+<html MANIFEST="manifest.appcache">
 <head>
     <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -64,7 +64,6 @@ require_once('getBaseInfo.php');
         </div>
         <div class="row text-center">
             <div  margin="40px" id="browsList" class="col-lg-11">
-
             </div>
         </div>
     </div>
@@ -72,7 +71,7 @@ require_once('getBaseInfo.php');
         <div id="map-canvas"></div>
     </div>
 </div>
-
+<script src="js/presentBrowseHistory.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN3etb_MUZAn64OCBYr8_DUQt-hFTUDzA"></script>
