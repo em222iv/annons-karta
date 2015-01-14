@@ -64,8 +64,34 @@ men exekverar dem inte.</p>
 
 <h3>Egen reflektion kring projektet</h3>
 <p>
-
+    De största problemen jag stött på är att hantera svaren från API:erna och att hålla kvalitén på koden bra.
+    Just kodkvalitén tycker jag att jag fortfarande kan förbrättra, men har inte haft tid.
+    Jag hade tänkt att implementera offline-läget så att man skulle kunna välja ut just vilken artikel man ville spara.
+    Men infowindows har varit litek krångliga att hantera.
 </p>
-<h3>Inledning</h3>
 
-<p></p>
+<h4>Eventuella buggar som jag vet fortfarande finns:</h4>
+<p>
+    Vissa områden/stadsdelar som blocket använder sig av skiljer sig ibland från de svar man får från geCode.
+    Eftersom geoCode hämtar ut ett område med lat,lng på det namnet man söker på så kan det skilja sig i vissa områden.
+
+        <bold>Exempel:</bold> Ibland så hämtar du ut gator i skärholmen istället för området Skärholmen i Stockholm.
+
+    Jag kan då inte hämta ut informationen ur blocket objektet, eftersom jag inte får ut ett område där jag kan placera det.
+    Detta resulterar i att ett infowindow skrivs ut, men att ingen information finns i det.
+</p>
+
+
+<h3>Risker med din applikation: </h3>
+
+<p>
+    Risken med min applikation är att det blir för många kall mot blocket genom apfy som jag går genom och ifall blocket stänger av dem pga. det.
+</p>
+<p>
+    Annars ser jag faktiskt inga riktiga, varken etiska, eller säkerhetsrisker med applikationen.
+    Man kan inte få ut direkt address utan att höra av sig till personen innan, vilket sker genom blockets egna site.
+    Det är endast ett sätt att förenkla sökning av ting till salu i sin närhet.
+</p>
+<p>
+    Jag anser att jag inte använt mig att några betygshöjande delar utan utgått från betygskrav 3.
+</p>
