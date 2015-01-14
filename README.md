@@ -10,8 +10,8 @@ Dock så måste man alltid gå via blockets egen hemsida för att kunna hitta ko
 <p>
 Så vitt jag vet finns det ingen liknande applikation för att hitta artiklar i närheten av sig
 </p>
-<h4>>Schematisk bild över applikationen</h4>
-<img src="img/schematiskbild.jpg">
+
+<a href="https://docs.google.com/document/d/1nG-OKwRkq7y77750JxQJvKVlCdL4f3uiXsZsK-Jh5oU/edit"><h4>>Schematisk bild över applikationen</h4></a>
 
 
 <h3>Serversida</h3>
