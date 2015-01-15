@@ -7,7 +7,6 @@ function renderBrowsList() {
     div = document.createElement('div');
     div.class = 'form-group text-center';
     var browsList  = localStorage.getItem("browsList");
-    console.log(div,browsList)
     div.innerHTML=browsList;
     document.getElementById("browsList").appendChild(div);
 }

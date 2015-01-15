@@ -85,14 +85,5 @@ require_once('getBaseInfo.php');
 <script src="js/searchLocations.js"></script>
 <script src="js/facebookLogin.js"></script>
 <script src="js/previousFilteringChoices.js"></script>
-<script>
-
-        if (navigator.onLine) {
-            console.log('online');
-        } else {
-            console.log('offline');
-        }
-
-</script>
 </body>
 </html>

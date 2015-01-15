@@ -1,4 +1,8 @@
 <h1>Rapport-projekt Annons-karta</h1>
+
+<a href="eerie.se/annons-karta/">körbar länk</a></br>
+<a href="https://www.screenmailer.com/v/3PAecDl6n5EaaTE">Videobeskrivning av applikationen></a>
+
 <h3>Inledning</h3>
 
 <p>Min applikation handlar om att kunna hitta närliggande ting till salu i närområdet. Jag kombinerar
@@ -49,9 +53,10 @@ Felhantering tar hand om tomma svar, ifall sökningarna är identiska, ifall nå
 
 <h3>Säkerhet och prestandaoptimering</h3>
 
-<p>Säkerthetsmässigt så har jag ingen databas att tänka på. Men jag använder mig av strip_tags innan något skickas
-mot API:et och sedan textContent vid presentering av text, vilket kan presentera taggar,ifall det skulle komma något otäckt svar från blocket,
-men exekverar dem inte.</p>
+<p>
+Säkerthetsmässigt så har jag ingen databas att tänka på. Men jag använder mig av strip_tags innan något skickas
+mot API:et
+</p>
 
 <h3>Offline-first</h3>
 
