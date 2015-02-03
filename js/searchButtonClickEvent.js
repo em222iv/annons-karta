@@ -9,54 +9,44 @@ $(document).keypress(function(event){
     }
 });
 $("#searchButton").click(function(e) {
-    var seachquery = $("#searchInput").val();
-    
-    //when searchbutton is clicked get value and filtering choices, save locally, toggle menu, post for php to make API request
 
+    var seachquery = $("#searchInput").val();
+
+    //when searchbutton is clicked get value and filtering choices, save locally, toggle menu, post for php to make API request
+    document.getElementById("info-container").innerHTML ="";
     var category = localStorage.getItem("chosenCategory");
     var region = localStorage.getItem("chosenRegion");
-    console.log(seachquery,category,region);
-    console.log($("#region-dropdown").val());
+    console.log('1',category,region);
+    if(category == null){
+        category = 11
+    }
+    if(region == null){
+        region = 0
+    }
+
     if ($('.bar').is('.ui-draggable-dragging')) {
         return false;
     }
+
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
+    var token = $("#token").val();
+    console.log("Token in HTML: " +token);
+    console.log('2');
     $.post(
         "APISearch.php",
         {
             name: seachquery,
             category : category,
-            region : region
+            region : region,
+            token:token
         },
         function(data) {
+            console.log('3');
+            console.log(data);
             //sends API request answer to extract info for google maps
             searchLocations(data,seachquery,region,category);
         }
     );
 });
 
-
-/*       var content = document.getElementById("page-content-wrapper");
- $("<div />").css({
- position: "absolute",
- width: "100%",
- height: "100%",
- left: 0,
- top: 0,
- zIndex: 1000000,  // to be on the safe side
- background: "url(./img/loading.gif) no-repeat 50% 50%"
- }).appendTo($(content).css("position", "relative"));
-
- setTimeout(function(){
- console.log('hej');
- content.lastElementChild.remove();
- }, 3000);*/
-
-
-
-//The full path of the Award.php file in the web root
-/*  $('body').click(function(e) {
- var target = $(e.target);
- console.log(target);
- });*/

@@ -9,6 +9,53 @@ html { height: 100% }
 body { height: 100%; margin: 0; padding: 0 }
 #map-canvas { height: 100%; width: 100%; position: absolute; z-index: 10000}
 #menu-toggle { position: relative; z-index: 111111; float:left; margin-top:20px; margin-left: 70px;}
+#info-popup { position: relative; z-index: 111111; float:left; margin-top:20px; margin-left: 10px;}
+#info-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-left: 200px;
+    margin-top: 200px;
+    z-index: 1000000;
+}
+.form-inline .form-group {
+
+    margin-bottom: 0;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+.firstHeading {
+    word-wrap: break-word;
+}
+#status {
+    margin-left:15px;
+}
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width:400px;
+    min-height: 200px;
+    margin-left: 100px !important;
+    z-index: 1060;
+    display: none;
+    /* max-width: 276px; */
+    padding: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: left;
+    white-space: normal;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
 
 html, body, #map-canvas {
     height: 100%;

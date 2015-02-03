@@ -23,7 +23,7 @@ Så vitt jag vet finns det ingen liknande applikation för att hitta artiklar i 
 Jag har valt mig att använda mig av php på serversida för att prata med API:erna.
 Jag använder mig av ett bibliotek som heter "Requests" som gör det enkelt att göra Requests mot API:erna.
 Cashningvis så sprarar jag undan det lilla som behövs(Kategorier och Län) i JSON-filer.
-</p>
+</p>2
 
 <p>
 Funktionaliteten fungerar så att när en användare får välja bland de katerogier och län som blocket erbjuder, och sedan den sökterm man vill.

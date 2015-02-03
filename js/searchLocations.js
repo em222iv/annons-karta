@@ -6,30 +6,26 @@ var search;
 var cat ="";
 var reg;
 function searchLocations(data,searchResult,region,category) {
-    var json;
 
+    console.log('4');
     //keep result if search is the same as previous
     //else save new search to localstorage
-    console.log(category);
+
     if(searchResult == null){
         alert('Du måste ange en sökning');
         return
     }
-    if(category == null){
-        alert('Välj Kategori');
-        return
-    }
-    if(region == null){
-        alert('Välj Län');
-        return;
-    }
+    console.log("Data back: " +data);
     if(search == searchResult && cat == category && reg == region){
         return;
     }else {
-        json = $.parseJSON(data);
+
+
+        var json = $.parseJSON(data);
         localStorage.removeItem("previousSearch");
         localStorage.setItem("previousSearch", JSON.stringify(json));
         json = $.parseJSON(localStorage.getItem("previousSearch"));
+
     }
     search = searchResult;
     cat = category;
@@ -38,6 +34,7 @@ function searchLocations(data,searchResult,region,category) {
     //array to filter out region who has articles avaible
     var filteredLocations = [];
     //filtering regions from search result
+    console.log(json.SearchResult.Node[1]);
     if($(json.SearchResult.Node).length <= 1){
 
         alert('Din sökning gav inga resultat');
@@ -56,6 +53,7 @@ function searchLocations(data,searchResult,region,category) {
         }
 
     }
+
     localStorage.removeItem("filtered");
     localStorage.setItem("filtered", JSON.stringify(filteredLocations));
     codeAddress(json);

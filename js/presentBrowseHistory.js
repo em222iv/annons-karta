@@ -3,10 +3,10 @@
  */
 
 function renderBrowsList() {
-    var div = "";
     div = document.createElement('div');
     div.class = 'form-group text-center';
     var browsList  = localStorage.getItem("browsList");
+    browsList = browsList.slice(9,10000);
     div.innerHTML=browsList;
     document.getElementById("browsList").appendChild(div);
 }

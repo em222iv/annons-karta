@@ -52,6 +52,7 @@ var map = {
 }
 // takes searchquery as parameter, handles it and renders marker/infowindows
 function codeAddress(searchJson) {
+    console.log('5');
     //takes away all previous markers
     for (var i=0;i<markersArray.length;i++) {
         markersArray[i].setMap(null);
@@ -103,6 +104,7 @@ function codeAddress(searchJson) {
                 //inserts markers into marker array, for a easy way to delete them when new search is made
                 markersArray.push(marker);
                 //sends marker to create infowindow for it
+
                 createInfoWindow(marker);
             }
         });
@@ -123,16 +125,30 @@ function createInfoWindow(currentMarker) {
                 +createListOfRegionArticles(currentMarker.content)
                 +'</form></div></div>';
             //infowindow is created
-            infowindow = new google.maps.InfoWindow({
-                content: infoWindowContent.toString(),
+
+            if(infoWindowContent.toString() !== '<div class="panel panel-default"><div class="panel-heading"><form class="form-inline"></form></div></div>') {
+                infowindow = new google.maps.InfoWindow({
+                    content: infoWindowContent.toString(),
+                    maxHeight:400,
+                    maxWidth:350,
+                    position: map.map.getCenter()
+
+                });
+
+            }
+           //incase blocket location and google location can't find any matches
+            else{ infowindow = new google.maps.InfoWindow({
+                content: "Denna artikel kunde inte spåras av google maps",
                 maxHeight:400,
                 maxWidth:350,
                 position: map.map.getCenter()
 
-            });
+            });}
+
+
             prev_infoWindow = infowindow;
             //tells infowinow to open for this certain marker
-            console.log(infowindow.content);
+
            // browsList = localStorage.getItem("browsList");
             localStorage.setItem("browsList",browsList+infowindow.content);
             var listdiv = document.getElementById('browsList');
@@ -150,8 +166,9 @@ function createListOfRegionArticles(chosenRegionMarker) {
     //loops search result to get article info
     for(var i = 0; i < previousSearch.SearchResult.Node.length;i++){
         if(chosenRegionMarker == previousSearch.SearchResult.Node[i].Location){
+
             contentString = contentString +
-                '<div border="1px solid black" class="form-group text-center" margin="50px">'+
+                '<div border="1px solid black" class="text-center" margin="50px">'+
                     '<div id="siteNotice">'+'</div>'+
                     '<h2 id="firstHeading" class="firstHeading">'+previousSearch.SearchResult.Node[i].Title+'</h2>'+
                     '<h4><p>Finns i: '+previousSearch.SearchResult.Node[i].Location+'</p></h4>'+
@@ -163,7 +180,10 @@ function createListOfRegionArticles(chosenRegionMarker) {
                 '</div><hr/>';
         }
     }
-    list.push(contentString);
+    if(contentString.length > 5 ||contentString != null){
+        list.push(contentString);
+    }
+
     return list;
 }
 
