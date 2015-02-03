@@ -101,10 +101,21 @@ Med ramverken håller jag mig till minifierade filer för att spara in så mycke
    säker på att de renderas på rätt plats. Detta uppfylls alltså inte alltid.
    Detta presenteras genom en informationruta som beskriver att artiklen inte kan pekas ut på kartan.
 </p>
+<p>
+Detta sker specieclt i området Göteborg och Malmö har jag märkt. Det är ofta blocket har bakat ihop flera områden i samma för att skapa ett större område,
+men också att platsen googleMaps försöker hitta pekar specifikt på en gata istället för området.
+</p>
 
 <h3>Risker med min applikation: </h3>
 <p>
     Risken med min applikation är att det blir för många kall mot blocket genom apfy som jag går genom och ifall blocket stänger av dem pga. det.
+</p>
+<p>
+En risk jag tog var att jobba med en tredjeparts API-tjänst dessutom. Apfy ger inte alltid de svaren som APIet beskriver.
+T.ex. fungerar inte sökning över flera län eller hela landet, vilket det står att den klarar av i dokumentationen.
+</p>
+<p>
+Detta och liknande problem har tagit upp väldigt mycket tid då jag fått sitta och se över min svar istället för att koncentrera mig på sjäva applikationen.
 </p>
 <p>
     Annars ser jag faktiskt inga verkliga, varken etiska, eller säkerhetsrisker med applikationen.
