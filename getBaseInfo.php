@@ -20,5 +20,6 @@ class GetBaseInfo {
 
             file_put_contents('jSON/categories.json',json_encode($categoryRequest->body));
             file_put_contents('jSON/regions.json',json_encode($regionsRequest->body));*/
+
     }
 }

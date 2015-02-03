@@ -186,5 +186,4 @@ function createListOfRegionArticles(chosenRegionMarker) {
 
     return list;
 }
-
 window.addEventListener(window,'load', init())

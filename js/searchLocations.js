@@ -5,17 +5,20 @@
 var search;
 var cat ="";
 var reg;
+var content = document.getElementById("info-container");
 function searchLocations(data,searchResult,region,category) {
 
-    console.log('4');
     //keep result if search is the same as previous
     //else save new search to localstorage
-
     if(searchResult == null){
         alert('Du måste ange en sökning');
         return
     }
-    console.log("Data back: " +data);
+    if(data == '{"SearchResult":{"@currentPage":"","@pages":""}}'){
+
+        content.innerHTML = '<div class="popover fade right in" role="tooltip" id="popover686512" style="top: 26px; left: 237.015625px; display: block;"><div class="arrow" style="top: 50%;"></div><h3 class="popover-title">Information</h3><div class="popover-content">'+'Din sökning av inga resultat.<br><br>Antingen finns det inga artiklar till försäljning eller så bör din sökning ses över'+'</div></div>'
+
+    }
     if(search == searchResult && cat == category && reg == region){
         return;
     }else {
@@ -34,9 +37,7 @@ function searchLocations(data,searchResult,region,category) {
     //array to filter out region who has articles avaible
     var filteredLocations = [];
     //filtering regions from search result
-    console.log(json.SearchResult.Node[1]);
     if($(json.SearchResult.Node).length <= 1){
-
         alert('Din sökning gav inga resultat');
         return;
     }

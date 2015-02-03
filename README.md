@@ -30,14 +30,14 @@ Funktionaliteten fungerar så att när en användare får välja bland de katero
 Detta skickas mot apfy, och blocket, tar en emot JSON svar med det artiklar som finns på blocket.
 Just nu hämtar den bara de 50 första träffarna. Detta för att jag vill bara ha de senast uppdaterade artiklarna så att man inte får upp flera månader gamla annonsen som redan kan va sålda.
 
-Efter detta så modifieras svaret och skickas till googles geoCode för att peka upp platserna där de finns belägna.
+Efter detta så modifieras svaret och skickas till googles geoCode för att peka ut platserna där de finns belägna.
 </p>
 
 <p>Ifall mina svar från blocket är tomma så presenteras användaren med ett felmeddelande som besrkiver problemet.</p>
 
 <h3>Klientsida</h3>
 
-<p>På Klientsida har jag valt att använda mig av javascript och Jquery. All cashning härifrån sker via localStorage.
+<p>På Klientsida har jag valt att använda mig av javascript och Jquery. All cachning härifrån sker via localStorage.
 </p>
 
 <p>
@@ -48,14 +48,24 @@ Med ajax postar jag till PHP-servern och sparar sedan undan den data som jag få
 </p>
 
 <p>
-Felhantering tar hand om tomma svar, ifall sökningarna är identiska, ifall något saknas till sökningen.
+Felhantering sker genom att jag ser om svaret från blocket är tomt. I sånna fall presenterar jag detta för användaren via en informationsruta.
 </p>
 
 <h3>Säkerhet och prestandaoptimering</h3>
 
 <p>
 Säkerthetsmässigt så har jag ingen databas att tänka på. Men jag använder mig av strip_tags innan något skickas
-mot API:et
+mot API:et.
+</p>
+<p>
+För att undvika csrf-attacker använder jag mig av en syncronized token. Dock så sparar jag inte på någon farlig information och allt som kan läckas är information som redan finns ute på blockets hemsida.
+</p>
+<p>
+I prestandaväg så har jag försökt att bryta ut och hålla koden så luftig som möjligt.
+Men jag vill också hålla kod som har relevans till samma fil. Vilket gör att googleMap.js blev väldigt stor.
+Detta också pga. att jag helt enkelt inte haft tid att göra det snyggare.
+
+Med ramverken håller jag mig till minifierade filer för att spara in så mycket prestanda som möjligt.
 </p>
 
 <h3>Offline-first</h3>
@@ -64,6 +74,10 @@ mot API:et
     Jag vill att användaren ska kunna se de senast browsade artiklarna offline.
     Söker man t.ex. på Kalmar län och ser att det finns träffar i Vimmerby och klickar på det området så kommer dens artiklar att sparas i menyn.
     Dessa kan också ses i offline-läge.
+
+    Jag anser att min applikation i största utsträckning endast bör användas i ett onlineläge.
+    Men genom att information om det senaste artiklarna sparas kan man tryckt stänga ner browsern eller tappa anslutning och fortfarande hålla
+    koll på vad man tidigare sökt/hittat i artikelväg.
 </p>
 
 <h3>Egen reflektion kring projektet</h3>
@@ -76,25 +90,21 @@ mot API:et
 
 <h4>Eventuella buggar som jag vet fortfarande finns:</h4>
 <p>
-    Vissa områden/stadsdelar som blocket använder sig av skiljer sig ibland från de svar man får från geCode.
-    Eftersom geoCode hämtar ut ett område med lat,lng på det namnet man söker på så kan det skilja sig i vissa områden.
+   Blockets namngivning på platser stämmer inte alltid överens med google maps. Specielt i tätortet, men också vissa glesbyggder.
+   Detta gör att jag inte kan hämta någon plats och således inte kan presentera artikeln.
+   För att hitta artiklarna i objektet så måste jag söka på deras plats, som måste stämma överens med googlemaps för att vara
+   säker på att de renderas på rätt plats. Detta uppfylls alltså inte alltid.
+   Detta presenteras genom en informationruta som beskriver att artiklen inte kan pekas ut på kartan.
 </p>
-<p>
-Exempel: Ibland så hämtar du ut gator i skärholmen istället för området Skärholmen i Stockholm.
-</p>
-<p>
-    Jag kan då inte hämta ut informationen ur blocket objektet, eftersom jag inte får ut ett område där jag kan placera det.
-    Detta resulterar i att ett infowindow skrivs ut, men att ingen information finns i det.
-</p>
+<p>tokenfel?</p>
 
 
-<h3>Risker med din applikation: </h3>
-
+<h3>Risker med min applikation: </h3>
 <p>
     Risken med min applikation är att det blir för många kall mot blocket genom apfy som jag går genom och ifall blocket stänger av dem pga. det.
 </p>
 <p>
-    Annars ser jag faktiskt inga riktiga, varken etiska, eller säkerhetsrisker med applikationen.
+    Annars ser jag faktiskt inga verkliga, varken etiska, eller säkerhetsrisker med applikationen.
     Man kan inte få ut direkt address utan att höra av sig till personen innan, vilket sker genom blockets egna site.
     Det är endast ett sätt att förenkla sökning av ting till salu i sin närhet.
 </p>

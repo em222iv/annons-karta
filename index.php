@@ -2,12 +2,10 @@
 session_start();
 //ini_set('include_path', 'C:\xampp\htdocs\phppot_samples\php_google_oauth_login\google-api-php-client\src');
 require_once('getBaseInfo.php');
-function getToken() {
-    $_SESSION['csrf'] = substr(hash('sha512',uniqid(rand(),true)),0,15);
-    return $_SESSION['csrf'];
-}
+$_SESSION['csrf'] = substr(hash('sha512',uniqid(rand(),true)),0,15);
+
 ?>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html MANIFEST="manifest.appcache">
 <head>
     <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
@@ -37,7 +35,7 @@ function getToken() {
                             <input class=" btn btn-default"type="button" id="searchButton" value="Sök!" />
                         </span>
                     </div>
-                    <input type="hidden"  name="TOKEN" id="token" value="<?php echo getToken() ?>" />
+                    <input type="hidden"  name="TOKEN" id="token" value="<?php echo $_SESSION['csrf'] ?>" />
                 </form>
             </div>
         </div>

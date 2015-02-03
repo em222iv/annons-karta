@@ -14,8 +14,8 @@ body { height: 100%; margin: 0; padding: 0 }
     position: absolute;
     width: 100px;
     height: 100px;
-    margin-left: 200px;
-    margin-top: 200px;
+    margin-left: -100px;
+    margin-top: 150px;
     z-index: 1000000;
 }
 .form-inline .form-group {
@@ -29,6 +29,9 @@ body { height: 100%; margin: 0; padding: 0 }
 }
 #status {
     margin-left:15px;
+}
+.u_0_8{
+    max-width: 50%;
 }
 .popover {
     position: absolute;
@@ -61,6 +64,9 @@ html, body, #map-canvas {
     height: 100%;
     margin: 0px;
     padding: 0px
+}
+.DemoBS2{
+    margin:20px;
 }
 #panel {
     position: absolute;
