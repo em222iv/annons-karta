@@ -96,8 +96,6 @@ Med ramverken håller jag mig till minifierade filer för att spara in så mycke
    säker på att de renderas på rätt plats. Detta uppfylls alltså inte alltid.
    Detta presenteras genom en informationruta som beskriver att artiklen inte kan pekas ut på kartan.
 </p>
-<p>tokenfel?</p>
-
 
 <h3>Risker med min applikation: </h3>
 <p>

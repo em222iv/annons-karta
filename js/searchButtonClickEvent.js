@@ -32,10 +32,6 @@ $("#searchButton").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
     var token = $("#token").val();
-    console.log(seachquery);
-    console.log(category);
-    console.log(region);
-    console.log(token);
     $.post(
         "APISearch.php",
         {

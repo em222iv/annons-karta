@@ -2,8 +2,9 @@
 session_start();
 //ini_set('include_path', 'C:\xampp\htdocs\phppot_samples\php_google_oauth_login\google-api-php-client\src');
 require_once('getBaseInfo.php');
-$_SESSION['csrf'] = substr(hash('sha512',uniqid(rand(),true)),0,15);
-
+if(!isset($_SESSION['csrf'])) {
+    $_SESSION['csrf'] = substr(hash('sha512',uniqid(rand(),true)),0,15);
+}
 ?>
 <!DOCTYPE html>
 <html MANIFEST="manifest.appcache">
@@ -12,16 +13,8 @@ $_SESSION['csrf'] = substr(hash('sha512',uniqid(rand(),true)),0,15);
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link href="css/style.css" rel="stylesheet">
-
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-    <style>
-        .DemoBS2{
-            margin:20px;
-        }
-
-    </style>
 </head>
 <body>
 <div id="wrapper" class="">
