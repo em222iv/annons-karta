@@ -7,6 +7,7 @@ function renderBrowsList() {
     div.class = 'form-group text-center';
     var browsList  = localStorage.getItem("browsList");
     if(browsList != null){
+
         browsList = browsList.slice(9,10000);
         div.innerHTML=browsList;
         document.getElementById("browsList").appendChild(div);

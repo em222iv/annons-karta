@@ -1,6 +1,6 @@
 <h1>Rapport-projekt Annons-karta</h1>
 
-<a href="eerie.se/annons-karta/">Körbar länk</a><br>
+<a href="eerie.se/annons-karta/index.php">Körbar länk</a><br>
 <a href="https://www.screenmailer.com/v/3PAecDl6n5EaaTE">Videobeskrivning av applikationen</a>
 
 <h3>Inledning</h3>
@@ -12,7 +12,7 @@ googlemaps och apfy, som bidrar med ett api för blocket, för att hämta ut art
 Dock så måste man alltid gå via blockets egen hemsida för att kunna hitta kontraktinformation till personen.
 </p>
 <p>
-Så vitt jag vet finns det ingen liknande applikation för att hitta artiklar i närheten av sig
+Så vitt jag vet finns det ingen liknande applikation för att hitta artiklar i närheten av specifikt valda platser
 </p>
 
 <a href="https://docs.google.com/document/d/1nG-OKwRkq7y77750JxQJvKVlCdL4f3uiXsZsK-Jh5oU/edit">Schematisk bild över applikationen</a>
@@ -43,10 +43,15 @@ Efter detta så modifieras svaret och skickas till googles geoCode för att peka
 <p>
 Javascripten tar emot data från klient och modiefierar data för att passa php-servers kall till API.
 Med googlemaps API så kan man då enkelt i javascript peka ut platser och presentera den informationen som tillhör den platsen.
-
-Med ajax postar jag till PHP-servern och sparar sedan undan den data som jag får tillbaka i localStorage, för att lätta kunna hantera senare.
 </p>
 
+<p>
+Med ajax postar jag till PHP-servern och sparar sedan undan den data som jag får tillbaka i localStorage, för att lätta kunna hantera senare.
+</p>
+<p>
+När en plats presentras följer också ett infowindow med med namn på länet. Denna kan anvädaren välja att ha kvar eller ta bort
+då man kanske vill komma ihåg vilka tidigare platser man sökt på och gå tillbaka.
+</p>
 <p>
 Felhantering sker genom att jag ser om svaret från blocket är tomt. I sånna fall presenterar jag detta för användaren via en informationsruta.
 </p>

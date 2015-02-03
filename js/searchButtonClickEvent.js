@@ -28,7 +28,6 @@ $("#searchButton").click(function(e) {
     if ($('.bar').is('.ui-draggable-dragging')) {
         return false;
     }
-
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
     var token = $("#token").val();
