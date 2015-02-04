@@ -1,6 +1,6 @@
 <h1>Rapport-projekt Annons-karta</h1>
 
-<a href="eerie.se/annons-karta/index.php">Körbar länk</a><br>
+<a href="eerie.se/annons-karta/index.php" target="_blank">Körbar länk</a><br>
 <a href="https://www.screenmailer.com/v/3PAecDl6n5EaaTE">Videobeskrivning av applikationen</a>
 
 <h3>Inledning</h3>
