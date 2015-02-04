@@ -84,6 +84,17 @@ Med ramverken håller jag mig till minifierade filer för att spara in så mycke
     Men genom att information om det senaste artiklarna sparas kan man tryckt stänga ner browsern eller tappa anslutning och fortfarande hålla
     koll på vad man tidigare sökt/hittat i artikelväg.
 </p>
+<p>
+För att ge användaren så bra feedback som möjligt så kollar jag var 5e sekund ifall man har en uppkoppling. Finns ingen så presenteras detta via en info-ruta och
+att man inte kan söka.
+Jag hade först ett XHR anrop som först kollade var 5 sekund, men det skapade problem med postningen som ajax gjorde vid sökning ibland.
+Jag valde då att göra kollen när användaren klickar på sök för, för att titta om man är uppkopplad, men det gjorde att
+alla sökning tog ungefär 1-2 sekunder extra för varje sökning, + att problemet med postning inte fungerade ibland.
+</p>
+<p>
+Jag vet att navigator.onLine inte är en lika säker och bra väg att titta efter anslutning, men i detta fallet så har den fungerat bra.
+Därför valde jag att använda mig av den.
+</p>
 
 <h3>Egen reflektion kring projektet</h3>
 <p>
@@ -108,7 +119,7 @@ men också att platsen googleMaps försöker hitta pekar specifikt på en gata i
 
 <h3>Risker med min applikation: </h3>
 <p>
-    Risken med min applikation är att det blir för många kall mot blocket genom apfy som jag går genom och ifall blocket stänger av dem pga. det.
+Risken med min applikation är att det blir för många kall mot blocket genom apfy som jag går genom och ifall blocket stänger av dem pga. det.
 </p>
 <p>
 En risk jag tog var att jobba med en tredjeparts API-tjänst dessutom. Apfy ger inte alltid de svaren som APIet beskriver.
@@ -118,10 +129,10 @@ T.ex. fungerar inte sökning över flera län eller hela landet, vilket det stå
 Detta och liknande problem har tagit upp väldigt mycket tid då jag fått sitta och se över min svar istället för att koncentrera mig på sjäva applikationen.
 </p>
 <p>
-    Annars ser jag faktiskt inga verkliga, varken etiska, eller säkerhetsrisker med applikationen.
-    Man kan inte få ut direkt address utan att höra av sig till personen innan, vilket sker genom blockets egna site.
-    Det är endast ett sätt att förenkla sökning av ting till salu i sin närhet.
+Annars ser jag faktiskt inga, varken etiska, eller säkerhetsrisker med applikationen.
+Man kan inte få ut direkt address utan att höra av sig till personen innan, vilket sker genom blockets egna site.
+Det är endast ett sätt att förenkla sökning av ting till salu i sin närhet.
 </p>
 <p>
-    Jag anser att jag inte använt mig att några betygshöjande delar utan utgått från betygskrav 3.
+Jag anser att jag inte använt mig att några betygshöjande delar utan utgått från betygskrav 3.
 </p>

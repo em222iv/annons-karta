@@ -52,7 +52,6 @@ var map = {
 }
 // takes searchquery as parameter, handles it and renders marker/infowindows
 function codeAddress(searchJson) {
-    console.log('5');
     //takes away all previous markers
     for (var i=0;i<markersArray.length;i++) {
         markersArray[i].setMap(null);

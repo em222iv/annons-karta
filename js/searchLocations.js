@@ -52,7 +52,6 @@ function searchLocations(data,searchResult,region,category) {
         if(indexValue == i && locations[i] != null){
             filteredLocations.push(locations[i]);
         }
-
     }
 
     localStorage.removeItem("filtered");
